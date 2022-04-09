@@ -1,0 +1,8 @@
+/.gradle/
+/bin/
+/build/
+/dev-resources/
+*.log
+
+/config.properties
+/jdbc.properties
