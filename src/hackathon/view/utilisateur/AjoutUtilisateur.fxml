@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="331.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hackathon.view.utilisateur.ControllerUserForm">
+   <top>
+      <AnchorPane prefHeight="385.0" prefWidth="704.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="53.0" fitWidth="156.0" layoutX="5.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logo.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="156.0" layoutX="595.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logo.PNG" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="221.0" layoutY="43.0" prefHeight="47.0" prefWidth="257.0" text="Ajouter un utilisateur" textFill="#0598ff">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Line endX="585.800048828125" endY="-6.799995422363281" layoutX="115.0" layoutY="90.0" startX="-115.00001525878906" startY="-6.799995422363281" />
+            <Label layoutX="19.0" layoutY="139.0" text="Nom de l'utilisateur :  " />
+            <Label layoutX="378.0" layoutY="139.0" text="Prenom :" />
+            <Label layoutX="378.0" layoutY="186.0" text="N° telephone : " />
+            <Button layoutX="560.0" layoutY="330.0" mnemonicParsing="false" onAction="#doValider" prefHeight="27.0" prefWidth="70.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-text-fill: black; -fx-border-radius: 5px;" text="Ajouter">
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.21061618626117706" green="0.062300000339746475" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <Hyperlink layoutX="14.0" layoutY="344.0" text="Attention un champ n'est par bien rempli  !" textFill="#f70404" />
+            <TextField fx:id="txfNom" layoutX="133.0" layoutY="134.0" prefHeight="15.0" prefWidth="225.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <TextField fx:id="txfPrenom" layoutX="448.0" layoutY="134.0" prefHeight="28.0" prefWidth="235.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <TextField fx:id="txfTelephone" layoutX="462.0" layoutY="181.0" prefHeight="15.0" prefWidth="225.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <Line endX="597.4000244140625" layoutX="105.0" layoutY="114.0" startX="-105.0" />
+            <Label layoutX="19.0" layoutY="90.0" text="Categorie : ">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="rbOrganisateur" layoutX="110.0" layoutY="90.0" mnemonicParsing="false" text="Organisateur">
+               <toggleGroup>
+                  <ToggleGroup fx:id="UserType" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="rbJury" layoutX="236.0" layoutY="90.0" mnemonicParsing="false" text="Jury" toggleGroup="$UserType" />
+            <RadioButton fx:id="rbAdmin" layoutX="342.0" layoutY="90.0" mnemonicParsing="false" text="Administrateur" toggleGroup="$UserType" />
+            <RadioButton fx:id="rbGestionnaireParticipants" layoutX="484.0" layoutY="90.0" mnemonicParsing="false" text="Gestionnaire des Participants" toggleGroup="$UserType" />
+            <Label layoutX="19.0" layoutY="186.0" text="Profession:" />
+            <TextField fx:id="txfProfession" layoutX="88.0" layoutY="181.0" prefHeight="28.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <Label layoutX="375.0" layoutY="245.0" text="Mot de passe" />
+            <TextField fx:id="txfMdp" layoutX="458.0" layoutY="240.0" prefHeight="28.0" prefWidth="224.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <Label layoutX="14.0" layoutY="298.0" text="Confirmez mdp" />
+            <TextField fx:id="txfConfirmMdp" layoutX="98.0" layoutY="288.0" prefHeight="28.0" prefWidth="226.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <Label layoutX="19.0" layoutY="245.0" prefHeight="18.0" prefWidth="62.0" text="Pseudo :" />
+            <TextField fx:id="txfPseudo" layoutX="101.0" layoutY="240.0" prefHeight="28.0" prefWidth="224.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <Label layoutX="377.0" layoutY="298.0" text="Hackathon" />
+            <ComboBox fx:id="cmbEvenement" layoutX="468.0" layoutY="294.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+   </top>
+   <right>
+      <AnchorPane prefHeight="398.0" prefWidth="389.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

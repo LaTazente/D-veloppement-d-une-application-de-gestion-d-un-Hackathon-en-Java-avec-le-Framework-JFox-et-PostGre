@@ -9,8 +9,12 @@ import javafx.application.Platform;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import jfox.exception.ExceptionValidation;
-import hackathon.dao.DaoCompte;
-import hackathon.data.Compte;
+import jfox.javafx.view.IManagerGui;
+import hackathon.dao.DaoIntervenir;
+import hackathon.dao.DaoUtilisateur;
+import hackathon.data.Utilisateur;
+import hackathon.view.EnumView;
+import hackathon.view.ManagerGui;
 
 
 public class ModelConnexion {
@@ -22,28 +26,30 @@ public class ModelConnexion {
 	// Données observables 
 	
 	// Vue connexion
-	private final Compte			courant = new Compte();
+	private final Utilisateur			courant = new Utilisateur();
 
-	// Compte connecté
-	private final Property<Compte>	compteActif = new SimpleObjectProperty<>();
+	// Utilisateur connecté
+	private final Property<Utilisateur>	compteActif = new SimpleObjectProperty<>();
 
 	
 	// Autres champs
 	@Inject
-	private DaoCompte	daoCompte;
+	private DaoUtilisateur	daoUtilisateur;
 	
+	@Inject
+	private DaoIntervenir	daoIntervenir;
 
 	// Getters 
 	
-	public Compte getCourant() {
+	public Utilisateur getCourant() {
 		return courant;
 	}
 	
-	public Property<Compte> compteActifProperty() {
+	public Property<Utilisateur> compteActifProperty() {
 		return compteActif;
 	}
 	
-	public Compte getCompteActif() {
+	public Utilisateur getCompteActif() {
 		return compteActif.getValue();
 	}
 	
@@ -52,8 +58,8 @@ public class ModelConnexion {
 	
 	@PostConstruct
 	public void init() {
-		courant.setPseudo( "geek" );
-		courant.setMotDePasse( "geek" );
+		courant.setId_user( "geek" );
+		courant.setMdp( "geek" );
 	}
 	
 	
@@ -62,13 +68,31 @@ public class ModelConnexion {
 
 	public void ouvrirSessionUtilisateur() {
 
-		Compte compte = daoCompte.validerAuthentification(
-					courant.pseudoProperty().getValue(), courant.motDePasseProperty().getValue() );
+		Utilisateur utilisateur = daoUtilisateur.validerAuthentification(
+					courant.id_userProperty().getValue(), courant.mdpProperty().getValue() );
 		
-		if( compte == null ) {
+		if( courant.getCode() == null ) {
+			throw new ExceptionValidation( "Veuillez selectionner un hackathon" );
+		} 
+		
+		if( utilisateur == null ) {
 			throw new ExceptionValidation( "Pseudo ou mot de passe invalide." );
 		} else {
-			Platform.runLater( () -> compteActif.setValue( compte ) );
+			Utilisateur utilisateur2 = daoIntervenir.verifierUtilisateurParHackathon(utilisateur, courant.getCode().getCode());
+			if( utilisateur2 == null ) {
+				System.out.println("pas existant");
+				throw new ExceptionValidation( "Pas d'utilisateur pour ce hackathon" );
+				
+			} else {
+				//Platform.runLater( () -> compteActif.setValue( utilisateur ) );
+				System.out.println("existant");
+				// System.out.println(daoIntervenir.listerPourUtilisateur(utilisateur2).get(0));
+				if(daoIntervenir.listerPourUtilisateur(utilisateur2).get(0).equals("Administrateur")) {
+					System.out.println("admin");
+					
+				}
+				
+			}
 		}
 	}
 	
@@ -77,4 +101,7 @@ public class ModelConnexion {
 		compteActif.setValue( null );
 	}
 
+	public void getRoleUtilisateur() {
+		
+	}
 }

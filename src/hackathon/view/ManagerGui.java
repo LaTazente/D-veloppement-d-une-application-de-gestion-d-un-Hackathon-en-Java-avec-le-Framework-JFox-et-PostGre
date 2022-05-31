@@ -21,8 +21,8 @@ public class ManagerGui extends ManagerGuiAbstract {
 		
 		// Configure le stage
 		stage.setTitle( "Gestion de contacts" );
-		stage.setWidth(600);
-		stage.setHeight(440);
+		stage.setWidth(730);
+		stage.setHeight(500);
 		stage.setMinWidth(340);
 		stage.setMinHeight(300);
 		stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));

@@ -8,19 +8,22 @@ import java.util.List;
 public final class Roles {
 	
 	// Champs statiques
-	
+	// GestionnaireParticipants
 	public static final String ADMINISTRATEUR	= "ADMINISTRATEUR";
 	public static final String UTILISATEUR		= "UTILISATEUR";
 	
+	public static final String GESTIONNAIREPARTICIPANTS		= "GESTIONNAIREPARTICIPANTS";
 	
 	private static final List<String>	roles = Collections.unmodifiableList( Arrays.asList( 
 			ADMINISTRATEUR,			
-			UTILISATEUR
+			UTILISATEUR,
+			GESTIONNAIREPARTICIPANTS
 	) );
 
 	private static final String[]	 	libelles = new String[] {
 			"Administrateur",
 			"Utilisateur",
+			"GestionnaireParticipants",
 	};
 	
 	

@@ -56,6 +56,8 @@ public class ControllerCompteForm extends Controller {
 		// ListView
 		var binding = new BindingPairCheckList<>( Roles.getRoles(), courant.getRoles() );
     	binding.configureListView( lsvRoles, item -> Roles.getLibelle( item.getKey() ) );
+ 
+    	
 	}
 	
 	

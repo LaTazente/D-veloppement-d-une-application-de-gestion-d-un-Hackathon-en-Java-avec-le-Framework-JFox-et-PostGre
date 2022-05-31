@@ -10,6 +10,7 @@ import javafx.scene.control.MenuItem;
 import jfox.javafx.view.IManagerGui;
 import hackathon.commun.Roles;
 import hackathon.data.Compte;
+import hackathon.data.Utilisateur;
 import hackathon.report.EnumReport;
 import hackathon.report.ManagerReport;
 import hackathon.view.systeme.ModelConnexion;
@@ -23,6 +24,11 @@ public class MenuBarAppli extends MenuBar {
 	private Menu	menuDonnees;
 	private Menu	menuTests;
 	private Menu	menuEtats;
+	private Menu	menuAdmin;
+	private Menu	menuOrganisateur;
+	private Menu	menuJury;
+	private Menu	menuGestionnaireParticipants;
+	private Menu	menuGestionnairePartenaires;
 	
 	private MenuItem itemDeconnecter;
 
@@ -147,12 +153,41 @@ public class MenuBarAppli extends MenuBar {
 				}
 			); 
 		
+		// Menus ajoutés par Gilles  - 300522
+		
+		// Menu Admin
+		
+		menu =  new Menu( "Admininstrateur" );;
+		this.getMenus().add(menu);
+		menuAdmin = menu;
+		
+		item = new MenuItem( "Gestion des partenaires" );
+		item.setOnAction(  e -> managerGui.showView( EnumView.GestionPartenaires )  );
+		menu.getItems().add( item );
+		
+		item = new MenuItem( "Gestion des equipes" );
+		item.setOnAction(  e -> managerGui.showView( EnumView.GestionEquipes )  );
+		menu.getItems().add( item );
+		
+		item = new MenuItem( "Gestion des utilisateurs" );
+		item.setOnAction(  e -> managerGui.showView( EnumView.UserForm )  );
+		menu.getItems().add( item );
+		
+		item = new MenuItem( "Gestion d'un hackathon" );
+		item.setOnAction(  e -> managerGui.showView( EnumView.AjouterEvenement )  );
+		menu.getItems().add( item );
+		itemCategories = item;
+		
+		item = new MenuItem( "Statistiques" );
+		item.setOnAction(  e -> managerGui.showView( EnumView.Statistiques )  );
+		menu.getItems().add( item );
+		itemComptes = item;
 	}
 
 	
 	// Méthodes auxiliaires
 	
-	private void configurerMenu( Compte compteActif  ) {
+	private void configurerMenu( Utilisateur compteActif  ) {
 
 		itemDeconnecter.setDisable(true);
 		
@@ -163,19 +198,24 @@ public class MenuBarAppli extends MenuBar {
 		
 		menuEtats.setVisible( false );
 		
-		if( compteActif != null ) {
-			itemDeconnecter.setDisable(false);
-			if( compteActif.isInRole( Roles.UTILISATEUR) ) {
-				menuDonnees.setVisible(true);
-				menuEtats.setVisible(true);
-			}
-			if( compteActif.isInRole( Roles.ADMINISTRATEUR ) ) {
-				menuDonnees.setVisible(true);
-				itemCategories.setVisible(true);
-				itemComptes.setVisible(true);
-				menuTests.setVisible(true);
-			}
-		}
+		//menuAdmin.setVisible(false);
+		
+//		if( compteActif != null ) {
+//			itemDeconnecter.setDisable(false);
+//			//System.out.println("icila "+ compteActif.isInRole( Roles.GESTIONNAIREPARTICIPANTS));
+//			System.out.println("icila "+ compteActif.getRoles());
+//			if( compteActif.isInRole( Roles.UTILISATEUR) ) {
+//				
+//				menuDonnees.setVisible(true);
+//				menuEtats.setVisible(true);
+//			}
+//			if( compteActif.isInRole( Roles.ADMINISTRATEUR ) ) {
+//				menuDonnees.setVisible(true);
+//				itemCategories.setVisible(true);
+//				itemComptes.setVisible(true);
+//				menuTests.setVisible(true);
+//			}
+//		}
 	}
 	
 }
