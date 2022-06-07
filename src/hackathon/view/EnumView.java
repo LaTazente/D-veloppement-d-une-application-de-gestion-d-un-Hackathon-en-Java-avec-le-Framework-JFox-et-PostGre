@@ -35,16 +35,38 @@ public enum EnumView implements IEnumView {
 	GestionEquipes		("gestionnaire_participants/Gestiondesequipes.fxml"),
 	GroupeForm		("gestionnaire_participants/AjouterEquipe.fxml"),
 	 Connexion			( "systeme/connexion.fxml" ),
+	 AccueilAdmin			( "utilisateur/AccueilAdmininstrateur.fxml" ),
 	AccueilGestionnaireParticipants			( "gestionnaire_participants/AccueilGestionnairedesParticipants.fxml" ),
 	// Cedric
 	listecandidats		("gestionnaire_participants/Gestionsdescandidat.fxml"),
 	ParticipantForm		("gestionnaire_participants/AjouterCandidat.fxml"),
 	ParticipantFormModif		("gestionnaire_participants/ModifierCandidat.fxml"),
 	UserForm					("utilisateur/AjoutUtilisateur.fxml"),
-	AjouterEvenement				("evenement/AjouterActivite.fxml"),
-	AjouterActivite					("evenement/AjouterEvenement.fxml"),
-	GestionPartenaires				("evenement/AjouterActivite.fxml"),
-	Statistiques					("evenement/AjouterEvenement.fxml"),
+	GestionUsers					("utilisateur/GestiondesUtilisateurs.fxml"),
+	EvenementForm				("evenement/AjouterEvenement.fxml"),
+	AjouterActivite					("evenement/AjouterActivite.fxml"),
+	Statistiques					("utilisateur/statistiques.fxml"),
+	choisirActivite					("gestionnaire_participants/ChoisirActivite.fxml"),
+	//BRENDA
+	GestionPartenaires  				("partenaire/GestionsdesPartenaires.fxml"),
+	AccueilGestionnairePartenaires			( "partenaire/AccueilPartenaires.fxml" ),
+	listepartenaires				("partenaire/GestionsdesPartenaires.fxml"),
+	PartenaireForm					("partenaire/AjouterUnPartenaire.fxml"),
+	PartenaireFormModif				("partenaire/ModifierUnPartenaire.fxml"),
+	GestionEvenements				("evenement/Gestiondesevenements.fxml"),
+	EvenementStatistique			("evenement/EvenementStatistique.fxml"),
+	ParticipantsEquipe			("evenement/ParticipantsEquipe.fxml"),
+	
+	// Cabrel
+	JuryForm					( "membrejury/AjouterUnMembre.fxml" ),
+	JuryFormModif				("membrejury/ModifierMembre.fxml"),
+	ModifierMembre				( "membrejury/ModifierMembre.fxml" ),
+	AjouterUnMembre				( "membrejury/AjouterUnMembre.fxml" ),
+	GestionsdesMembreJury			( "membrejury/GestionsdesMembreJury.fxml" ),
+	AccueilMembreJury			( "membrejury/AccueilMembreJury.fxml" ),
+
+	gestionNotes	("gestionNotes/GestionsdesNotes.fxml"),
+	gestionPresence("gestionnaire_participants/GestionPresence.fxml");
 	;
 
 	

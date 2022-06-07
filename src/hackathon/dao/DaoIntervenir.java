@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.jdbc.UtilJdbc;
-import hackathon.data.Evenement;
 import hackathon.data.Utilisateur;
 
 public class DaoIntervenir {

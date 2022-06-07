@@ -1,5 +1,6 @@
 package hackathon.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,11 +71,15 @@ public class DaoParticipant {
 			stmt.setObject(	6, p.getEmail() );
 			stmt.setObject(7, p.getIdGroupe().getId_groupe());
 			stmt.executeUpdate();
+			
+			IncrementeGroupe(p);
+			
 
 			// Récupère l'identifiant généré par le SGBD
 			rs = stmt.getGeneratedKeys();
 			rs.next();
 			p.setId( rs.getObject( 1, Integer.class )+"" ); 
+			inscrire(p);
 	
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -122,6 +127,7 @@ public class DaoParticipant {
 		try {
 			cn = dataSource.getConnection();
 
+			//IncrementeGroupe(p);
 			// Supprime le personne
 			sql = "DELETE FROM hackathon.participant WHERE id = ? ";
 			stmt = cn.prepareStatement(sql);
@@ -179,6 +185,122 @@ public class DaoParticipant {
 		return participant;
 	}
 	
-	
+	 public List<Participant> recherche_participants( String idEvenement )  {
+	    	
+			Connection			cn		= null;
+			CallableStatement	stmt	= null;
+			String 				sql;
+			ResultSet 			rs		= null;
 
+			try {
+				cn = dataSource.getConnection();
+
+				// Supprime le personne
+				sql = "{ CALL participant_recherche_participants( ? ) }";
+				stmt = cn.prepareCall(sql);
+				stmt.setObject( 1, idEvenement );
+				rs = stmt.executeQuery();
+				
+				List<Participant> liste = new ArrayList<>();
+				while (rs.next()) {
+					liste.add( construireParticipant( rs ) );
+				}
+				return liste;
+	            
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( stmt, cn );
+			}
+	}
+
+	 public List<Participant> retrouverMembresParGroupe( String idGroupe ) {
+
+			Connection			cn 		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT * FROM PARTICIPANT  WHERE ID_GROUPE  = ?";
+				stmt = cn.prepareStatement( sql );
+				stmt.setString(1, idGroupe);
+				rs = stmt.executeQuery();
+
+				List<Participant> liste = new ArrayList<>();
+				while (rs.next()) {
+					liste.add( construireParticipant( rs ) );
+				}
+				return liste;
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+	 
+	 public void IncrementeGroupe(Participant p) {
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "UPDATE hackathon.groupe SET nbre_menbres = nbre_menbres + 1 WHERE id_groupe = ?";
+	            stmt = cn.prepareStatement(sql);
+	            stmt.setObject( 1, p.getIdGroupe().getId_groupe());
+	            stmt.executeUpdate();
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+	 
+	 public void decrementeGroupe(Participant p) {
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "UPDATE hackathon.groupe SET nbre_menbres = nbre_menbres - 1 WHERE id_groupe = ?";
+	            stmt = cn.prepareStatement(sql);
+	            stmt.setObject( 1, p.getIdGroupe().getId_groupe());
+	            stmt.executeUpdate();
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+	 
+	 public void inscrire(Participant p) {
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+
+			try {
+				cn = dataSource.getConnection();
+				System.out.println("Quelqu'un veut créer des particpants?");
+				// Insère le personne
+				sql = "INSERT INTO hackathon.s_inscrire ( id, code ) VALUES ( ?, ? )";
+				stmt = cn.prepareStatement( sql  );
+				stmt.setObject(	1, Integer.parseInt(p.getId()) );
+				stmt.setObject(	2, p.getIdGroupe().getCode().getCode() );
+				stmt.executeUpdate();
+
+				// Récupère l'identifiant généré par le SGBD
+				rs = stmt.getGeneratedKeys();
+
+		
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
 }

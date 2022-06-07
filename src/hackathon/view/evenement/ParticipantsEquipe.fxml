@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="424.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hackathon.view.evenement.ControllerParticipantEquipe">
+   <left>
+      <AnchorPane prefHeight="401.0" prefWidth="172.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="85.0" fitWidth="170.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Pictures/image-devAppli/logo.PNG" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="500.0" prefWidth="527.0" style="-fx-border-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <Hyperlink layoutX="255.0" layoutY="394.0" textFill="#fa0808" />
+            <FontAwesomeIconView fill="#f70505" glyphName="CLOSE" layoutX="503.0" layoutY="18.0" onMouseClicked="#fermer" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="USERS" layoutX="197.0" layoutY="62.0" size="45" text="" wrappingWidth="66.61431121826172">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </FontAwesomeIconView>
+            <Text fill="#0598ff" layoutX="112.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des Candidats">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="299.0" layoutY="129.0" />
+            <TextField layoutX="325.0" layoutY="111.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TableView fx:id="tbvParticipant" layoutX="12.0" layoutY="166.0" prefHeight="200.0" prefWidth="510.0">
+              <columns>
+                <TableColumn fx:id="tbcNom" prefWidth="81.6000337600708" text="Nom" />
+                <TableColumn fx:id="tbcPrenom" prefWidth="76.79998779296875" text="Prenom" />
+                  <TableColumn fx:id="tbcRole" prefWidth="87.19996643066406" text="Role" />
+                  <TableColumn fx:id="tbcSexe" prefWidth="95.19998168945312" text="Sexe" />
+                  <TableColumn fx:id="tbcTelephone" prefWidth="81.60003662109375" text="Telephone" />
+                  <TableColumn fx:id="tbcMail" prefWidth="87.99993896484375" text="Adresse Mail" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+   </right>
+</BorderPane>

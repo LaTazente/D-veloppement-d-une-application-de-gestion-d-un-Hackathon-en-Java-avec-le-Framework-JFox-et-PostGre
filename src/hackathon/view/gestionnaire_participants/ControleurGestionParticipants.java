@@ -6,6 +6,7 @@ import hackathon.data.Categorie;
 import hackathon.data.Participant;
 import hackathon.data.Personne;
 import hackathon.view.EnumView;
+import hackathon.view.systeme.ControllerConnexion;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -133,7 +134,12 @@ public class ControleurGestionParticipants extends Controller{
 	
 	@FXML
 	private void goBack() {
-		managerGui.showView(EnumView.AccueilGestionnaireParticipants);
+		System.out.println("on est ici");
+		if(ControllerConnexion.getRoleUser().equals("GestionnaireParticipant")) 
+			managerGui.showView(EnumView.AccueilGestionnaireParticipants);
+		
+		if(ControllerConnexion.getRoleUser().equals("Administrateur"))
+			managerGui.showView(EnumView.AccueilAdmin);
 	}
 	
 	

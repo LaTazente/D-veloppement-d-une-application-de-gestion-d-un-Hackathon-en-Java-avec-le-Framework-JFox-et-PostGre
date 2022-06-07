@@ -34,18 +34,13 @@
                </graphic>
             </Button>
             <FontAwesomeIconView glyphName="PLUS" layoutX="47.0" layoutY="171.0" />
-            <Button fx:id="btnModifier1" layoutX="27.0" layoutY="336.0" mnemonicParsing="false" onAction="#goBack" prefHeight="46.0" prefWidth="138.0" text="               Retour">
-               <graphic>
-                  <FontAwesomeIconView glyphName="ARROW_LEFT" />
-               </graphic>
-            </Button>
+            <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="43.0" layoutY="35.0" onMouseClicked="#goBack" wrappingWidth="29.485726356506348" />
          </children></AnchorPane>
    </left>
    <center>
       <AnchorPane prefHeight="500.0" prefWidth="527.0" style="-fx-border-color: #0598ff;" BorderPane.alignment="CENTER">
          <children>
             <Hyperlink layoutX="255.0" layoutY="394.0" textFill="#fa0808" />
-            <FontAwesomeIconView fill="#f70505" glyphName="CLOSE" layoutX="503.0" layoutY="18.0" />
             <FontAwesomeIconView fill="#0598ff" glyphName="USERS" layoutX="197.0" layoutY="62.0" size="45" text="" wrappingWidth="66.61431121826172">
                <font>
                   <Font size="48.0" />
@@ -58,13 +53,12 @@
             </Text>
             <FontAwesomeIconView glyphName="SEARCH" layoutX="299.0" layoutY="129.0" />
             <TextField layoutX="325.0" layoutY="111.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <TableView fx:id="lsvGroupes" layoutX="62.0" layoutY="168.0" prefHeight="200.0" prefWidth="457.0">
+            <TableView fx:id="lsvGroupes" layoutX="62.0" layoutY="168.0" onMouseClicked="#gererClicSurListe" prefHeight="200.0" prefWidth="457.0">
               <columns>
                 <TableColumn fx:id="columnNom" prefWidth="81.6000337600708" text="Nom" />
-                <TableColumn fx:id="columnIdGroupe" prefWidth="88.0" text="Id Groupe" />
-                  <TableColumn fx:id="columnJury" prefWidth="84.80000305175781" text="Jury" />
-                  <TableColumn fx:id="columnNbreMembres" prefWidth="92.800048828125" text="Nbre Membres" />
-                  <TableColumn fx:id="columnNbreMax" prefWidth="130.39990234375" text="Nbre Maximal" />
+                <TableColumn fx:id="columnIdGroupe" prefWidth="117.59999084472656" text="Id Groupe" />
+                  <TableColumn fx:id="columnEvenement" prefWidth="111.20010375976562" text="Evenement" />
+                  <TableColumn fx:id="columnNbreMembres" prefWidth="146.39996337890625" text="Nbre Membres" />
               </columns>
             </TableView>
          </children></AnchorPane>

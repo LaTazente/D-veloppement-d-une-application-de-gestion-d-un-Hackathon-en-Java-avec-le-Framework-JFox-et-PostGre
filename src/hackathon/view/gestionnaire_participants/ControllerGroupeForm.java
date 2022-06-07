@@ -15,10 +15,10 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Controller;
 import jfox.javafx.view.IManagerGui;
 import hackathon.commun.Roles;
-import hackathon.data.Jury;
+import hackathon.data.Evenement;
 import hackathon.data.Personne;
 import hackathon.view.EnumView;
-import hackathon.view.jury.ModelJury;
+import hackathon.view.evenement.ModelEvenement;
 import hackathon.view.personne.ModelPersonne;
 
 
@@ -37,10 +37,7 @@ public class ControllerGroupeForm extends Controller {
 	  private TextField txfIdEquipe;
 
 	  @FXML
-	  private TextField txfNombreParticipants;
-
-	  @FXML
-	  private ComboBox<Jury>	cmbJury;
+	  private ComboBox<Evenement>	cmbEvenement;
 	// Autres champs
 	
 	@Inject
@@ -48,7 +45,7 @@ public class ControllerGroupeForm extends Controller {
 	@Inject
 	private ModelGroupe			modelGroupe;
 	@Inject
-	private ModelJury		modelJury;
+	private ModelEvenement		modelEvenement;
 
 	
 	// Initialisation du Controller
@@ -62,12 +59,11 @@ public class ControllerGroupeForm extends Controller {
 		// bindBidirectional( txfId, courant.idProperty(), new ConverterInteger() );
 		bindBidirectional( txfNomEquipe, courant.nomProperty() );
 		bindBidirectional( txfIdEquipe, courant.id_groupeProperty());
-		bindBidirectional( txfNombreParticipants, courant.nbre_menbresProperty(), new ConverterInteger() );
 		
-		System.out.println("ici test "+ modelJury.getListe());
-		cmbJury.setItems( modelJury.getListe() );
-		bindBidirectional( cmbJury, courant.id_juryProperty() );
-		UtilFX.setCellFactory( cmbJury, item -> item.getId_jury() );
+		System.out.println("ici test "+ modelEvenement.getListe());
+		cmbEvenement.setItems( modelEvenement.getListe() );
+		bindBidirectional( cmbEvenement, courant.codeProperty() );
+		UtilFX.setCellFactory( cmbEvenement, item -> item.getCode() );
 		
 	}
 	
@@ -75,7 +71,7 @@ public class ControllerGroupeForm extends Controller {
 	@Override
 	public void refresh() {
 		modelGroupe.actualiserCourant();
-		modelJury.actualiserListe();
+		modelEvenement.actualiserListe();
 		if(modelGroupe.getCourant().getId_groupe() != null) {
 			System.out.println("ici "+  modelGroupe.getCourant().getId_groupe());
 			txfIdEquipe.setDisable(true);
@@ -102,8 +98,8 @@ public class ControllerGroupeForm extends Controller {
 	}
 	
 	@FXML
-	private void doJurySupprimer() {
-		cmbJury.setValue( null );
+	private void doEvenementSupprimer() {
+		cmbEvenement.setValue( null );
 	}
 	
 

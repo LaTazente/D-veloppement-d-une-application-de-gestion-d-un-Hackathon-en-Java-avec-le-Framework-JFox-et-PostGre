@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -58,7 +57,6 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Hyperlink layoutX="14.0" layoutY="344.0" text="Attention un champ n'est par bien rempli  !" textFill="#f70404" />
             <TextField fx:id="txfNom" layoutX="133.0" layoutY="134.0" prefHeight="15.0" prefWidth="225.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
             <TextField fx:id="txfPrenom" layoutX="448.0" layoutY="134.0" prefHeight="28.0" prefWidth="235.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
             <TextField fx:id="txfTelephone" layoutX="462.0" layoutY="181.0" prefHeight="15.0" prefWidth="225.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
@@ -73,7 +71,7 @@
                   <ToggleGroup fx:id="UserType" />
                </toggleGroup></RadioButton>
             <RadioButton fx:id="rbJury" layoutX="236.0" layoutY="90.0" mnemonicParsing="false" text="Jury" toggleGroup="$UserType" />
-            <RadioButton fx:id="rbAdmin" layoutX="342.0" layoutY="90.0" mnemonicParsing="false" text="Administrateur" toggleGroup="$UserType" />
+            <RadioButton fx:id="rbGestionnairePartenaires" layoutX="342.0" layoutY="90.0" mnemonicParsing="false" text="Gest. Partenaires" toggleGroup="$UserType" />
             <RadioButton fx:id="rbGestionnaireParticipants" layoutX="484.0" layoutY="90.0" mnemonicParsing="false" text="Gestionnaire des Participants" toggleGroup="$UserType" />
             <Label layoutX="19.0" layoutY="186.0" text="Profession:" />
             <TextField fx:id="txfProfession" layoutX="88.0" layoutY="181.0" prefHeight="28.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
@@ -85,6 +83,24 @@
             <TextField fx:id="txfPseudo" layoutX="101.0" layoutY="240.0" prefHeight="28.0" prefWidth="224.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
             <Label layoutX="377.0" layoutY="298.0" text="Hackathon" />
             <ComboBox fx:id="cmbEvenement" layoutX="468.0" layoutY="294.0" prefWidth="150.0" />
+            <Button layoutX="142.0" layoutY="330.0" mnemonicParsing="false" onAction="#goBack" prefHeight="27.0" prefWidth="70.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-text-fill: black; -fx-border-radius: 5px;" text="Retour">
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.21061618626117706" green="0.062300000339746475" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
          </children>
       </AnchorPane>
    </top>

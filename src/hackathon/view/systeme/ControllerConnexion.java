@@ -28,6 +28,8 @@ public class ControllerConnexion extends Controller {
 	@FXML
 	private ComboBox<Evenement>	cmbEvenement;
 	
+	private static String roleUser;
+	
 	// Autres champs
 	
 	@Inject
@@ -71,14 +73,35 @@ public class ControllerConnexion extends Controller {
 	@FXML
 	private void doConnexion() {
 		managerGui.execTask( () -> {
-			modelConnexion.ouvrirSessionUtilisateur();
+			String role = modelConnexion.ouvrirSessionUtilisateur();
 			System.out.println("Bonne connexion");
+			System.out.println(role);
 			Platform.runLater( () -> {
          			modelInfo.titreProperty().setValue( "Bienvenue" );
         			modelInfo.messageProperty().setValue( "Connexion réussie" );
-        			managerGui.showView(EnumView.AccueilGestionnaireParticipants);
+        			setRoleUser(role);
+        			if(role.equals("Administrateur")) {
+        				managerGui.showView(EnumView.AccueilAdmin);
+        			}else if(role.equals("GestionnaireParticipants")) {
+        				managerGui.showView(EnumView.AccueilGestionnaireParticipants);
+        			}else if(role.equals("GestionnairePartenaires")) {
+        				managerGui.showView(EnumView.AccueilGestionnairePartenaires);
+        			}else if(role.equals("Jury")) {
+        				managerGui.showView(EnumView.AccueilMembreJury);
+        			}
+        			//
             }) ;
 		} );
+	}
+
+
+	public static String getRoleUser() {
+		return roleUser;
+	}
+
+
+	public static void setRoleUser(String roleUser) {
+		ControllerConnexion.roleUser = roleUser;
 	}
 	
 

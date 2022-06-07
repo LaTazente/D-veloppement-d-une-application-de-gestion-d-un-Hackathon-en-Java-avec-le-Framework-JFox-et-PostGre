@@ -19,7 +19,7 @@ public class Groupe {
 	private final StringProperty   	 	id_groupe     	  	= new SimpleStringProperty();
 	private final StringProperty   	 	nom     	  	= new SimpleStringProperty();
 	private final Property<Integer>		nbre_menbres	= new SimpleObjectProperty<>();
-	private final Property<Jury>	    id_jury				= new SimpleObjectProperty<>();
+	private final Property<Evenement>	    code				= new SimpleObjectProperty<>();
 	
 	// Getters & setters
 
@@ -70,48 +70,30 @@ public class Groupe {
 		this.nbre_menbresProperty().setValue(nbre_menbres);
 	}
 
-	public final Property<Jury> id_juryProperty() {
-		return this.id_jury;
+
+	public final Property<Evenement> codeProperty() {
+		return this.code;
 	}
 	
 
 
-	public final Jury getId_jury() {
-		return this.id_juryProperty().getValue();
+
+	public final Evenement getCode() {
+		return this.codeProperty().getValue();
 	}
 	
 
 
-	public final void setId_jury(final Jury id_jury) {
-		this.id_juryProperty().setValue(id_jury);
+
+	public final void setCode(final Evenement code) {
+		this.codeProperty().setValue(code);
 	}
-	
 	
 	// hashCode() & equals()
+
+
+
 	
-	
-
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id_groupe, id_jury, nbre_menbres, nom);
-	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Groupe other = (Groupe) obj;
-		return Objects.equals(id_groupe, other.id_groupe) && Objects.equals(id_jury, other.id_jury)
-				&& Objects.equals(nbre_menbres, other.nbre_menbres) && Objects.equals(nom, other.nom);
-	}
 
 
 	

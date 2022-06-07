@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -199,5 +200,31 @@ public class DaoJury {
 		}
 		return jury;
 	}
+    
+    // cabrel
+    public List<Jury> listeJury(){
+  		Connection			cn		= null;
+  		PreparedStatement	stmt	= null;
+  		ResultSet 			rs		= null;
+  		String				sql;
+  		//System.out.println("on est ici");
+  		try {
+  			cn = dataSource.getConnection();
+  			sql = "SELECT * FROM hackathon.jury";
+  			stmt = cn.prepareStatement( sql );
+  			rs = stmt.executeQuery();
+
+  			List<Jury> liste = new ArrayList<>();
+  			while (rs.next()) {
+  				liste.add( construireJury( rs ) );
+  			}
+  			return liste;
+
+  		} catch (SQLException e) {
+  			throw new RuntimeException(e);
+  		} finally {
+  			UtilJdbc.close( rs, stmt, cn );
+  		}	
+  	}
 
 }

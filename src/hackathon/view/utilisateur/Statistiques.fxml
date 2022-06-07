@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="784.0" styleClass="gradient-background" stylesheets="@ressources/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="48.0" prefWidth="784.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="290.0" styleClass="shadow" stylesheets="@ressources/styles.css" text="DASHBOARD STATISTIQUES" textFill="#f4ecec">
+               <font>
+                  <Font name="Franklin Gothic Book" size="24.0" />
+               </font>
+            </Label>
+            <Pane maxHeight="-Infinity" prefHeight="1.0" prefWidth="200.0" styleClass="line-color" stylesheets="@ressources/styles.css" HBox.hgrow="ALWAYS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets top="25.0" />
+               </HBox.margin>
+            </Pane>
+            <ImageView fitHeight="52.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logo.PNG" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="507.0" prefWidth="206.0" styleClass="container" stylesheets="@ressources/styles.css" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="5.0" />
+         </BorderPane.margin>
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+               <image>
+                  <Image url="@../../images/administrateur.jpg" />
+               </image>
+            </ImageView>
+            <Pane maxHeight="-Infinity" prefHeight="1.0" prefWidth="200.0" styleClass="line-color" stylesheets="@ressources/styles.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Pane>
+            <VBox prefHeight="294.0" prefWidth="206.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="206.0">
+                     <children>
+                        <FontAwesomeIconView />
+                        <Label styleClass="shadow" stylesheets="@ressources/styles.css" text="Dashboard" textFill="#faf0f0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="206.0">
+                     <children>
+                        <FontAwesomeIconView />
+                        <Label styleClass="shadow" stylesheets="@ressources/styles.css" text="Dashboard" textFill="#faf0f0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="206.0">
+                     <children>
+                        <FontAwesomeIconView />
+                        <Label styleClass="shadow" stylesheets="@ressources/styles.css" text="Dashboard" textFill="#faf0f0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="206.0">
+                     <children>
+                        <FontAwesomeIconView />
+                        <Label styleClass="shadow" stylesheets="@ressources/styles.css" text="Dashboard" textFill="#faf0f0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="206.0">
+                     <children>
+                        <FontAwesomeIconView />
+                        <Label styleClass="shadow" stylesheets="@ressources/styles.css" text="Dashboard" textFill="#faf0f0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="206.0">
+                     <children>
+                        <FontAwesomeIconView />
+                        <Label styleClass="shadow" stylesheets="@ressources/styles.css" text="Dashboard" textFill="#faf0f0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="206.0">
+                     <children>
+                        <FontAwesomeIconView />
+                        <Label styleClass="shadow" stylesheets="@ressources/styles.css" text="Dashboard" textFill="#faf0f0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <HBox prefHeight="182.0" prefWidth="573.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox maxHeight="-Infinity" prefHeight="200.0" prefWidth="265.0" styleClass="container" stylesheets="@ressources/styles.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="48.0" prefWidth="290.0" styleClass="shadow" stylesheets="@ressources/styles.css" text="WORK TIME" textFill="#f4ecec">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="24.0" />
+                     </font>
+                  </Label>
+                  <LineChart>
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </VBox>
+            <VBox maxHeight="-Infinity" prefHeight="200.0" prefWidth="265.0" styleClass="container" stylesheets="@ressources/styles.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="48.0" prefWidth="290.0" styleClass="shadow" stylesheets="@ressources/styles.css" text="WORK TIME" textFill="#f4ecec">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="24.0" />
+                     </font>
+                  </Label>
+                  <LineChart>
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </LineChart>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>

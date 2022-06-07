@@ -11,6 +11,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Controller;
+import jfox.javafx.view.IEnumView;
 import jfox.javafx.view.IManagerGui;
 import hackathon.data.Groupe;
 import hackathon.view.EnumView;
@@ -34,11 +35,9 @@ public class ControllerGroupeListe extends Controller {
 	@FXML
 	private TableColumn<Groupe, String> columnIdGroupe;
 	@FXML
-	private TableColumn<Groupe, String> columnJury;
+	private TableColumn<Groupe, String> columnEvenement;
 	@FXML
 	private TableColumn<Groupe, String> columnNbreMembres;
-	@FXML
-	private TableColumn<Groupe, String> columnNbreMax;
 	
 	// Autres champs
 	
@@ -59,9 +58,8 @@ public class ControllerGroupeListe extends Controller {
 		// UtilFX.setValueFactory(columnNom, modelGroupe.getCourant().getNom());
 		UtilFX.setValueFactory(columnNom, "nom");
 		UtilFX.setValueFactory(columnIdGroupe, "id_groupe");
-		UtilFX.setValueFactory(columnJury, "id_jury" );
+		UtilFX.setValueFactory(columnEvenement, "code" );
 		UtilFX.setValueFactory(columnNbreMembres, "nbre_menbres");
-		UtilFX.setValueFactory(columnNbreMax, "nbre_menbres");
 		
 		// Comportement si modificaiton de la séleciton
 		lsvGroupes.getSelectionModel().getSelectedItems().addListener( 
@@ -104,7 +102,7 @@ public class ControllerGroupeListe extends Controller {
 	
 	@FXML
 	private void goBack() {
-		managerGui.showView(EnumView.AccueilGestionnaireParticipants);
+//		managerGui.showView(EnumView.AccueilGestionnaireParticipants);
 	}
 	
 	// Gestion des évènements
@@ -117,7 +115,9 @@ public class ControllerGroupeListe extends Controller {
 				if ( lsvGroupes.getSelectionModel().getSelectedIndex() == -1 ) {
 					managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 				} else {
-					doModifier();
+					modelGroupe.setSelection(lsvGroupes.getSelectionModel().getSelectedItem());
+					modelGroupe.actualiserCourant();
+					managerGui.showView(EnumView.choisirActivite);
 				}
 			}
 		}
@@ -134,6 +134,10 @@ public class ControllerGroupeListe extends Controller {
 			btnModifier.setDisable(false);
 			btnSupprimer.setDisable(false);
 		}
+	}
+	@FXML
+	public void fermer() {
+		managerGui.closeDialog();
 	}
 
 }

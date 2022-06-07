@@ -66,7 +66,7 @@ public class ModelConnexion {
 	// Actions
 
 
-	public void ouvrirSessionUtilisateur() {
+	public String ouvrirSessionUtilisateur() {
 
 		Utilisateur utilisateur = daoUtilisateur.validerAuthentification(
 					courant.id_userProperty().getValue(), courant.mdpProperty().getValue() );
@@ -86,14 +86,16 @@ public class ModelConnexion {
 			} else {
 				//Platform.runLater( () -> compteActif.setValue( utilisateur ) );
 				System.out.println("existant");
-				// System.out.println(daoIntervenir.listerPourUtilisateur(utilisateur2).get(0));
-				if(daoIntervenir.listerPourUtilisateur(utilisateur2).get(0).equals("Administrateur")) {
-					System.out.println("admin");
-					
-				}
+//				if(daoIntervenir.listerPourUtilisateur(utilisateur2).get(0).equals("Administrateur")) {
+//					System.out.println("admin");
+//					
+//				}
+				return  daoIntervenir.listerPourUtilisateur(utilisateur2).get(0);
 				
 			}
 		}
+		
+		
 	}
 	
 

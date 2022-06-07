@@ -7,6 +7,7 @@ import java.sql.SQLException;
 //import java.sql.Statement;
 //import java.util.ArrayList;
 //import java.util.List;
+import java.time.LocalDate;
 
 import javax.inject.Inject;
 //import javax.sql.CommonDataSource;
@@ -104,33 +105,31 @@ public class DaoEvenement {
 //	}
 //
 //	
-//	public void supprimer( int idPersonne )  {
-//
-//		Connection			cn		= null;
-//		PreparedStatement	stmt	= null;
-//		String 				sql;
-//
-//		// Supprime les telephones
-//		daoTelephone.supprimerPourPersonne( idPersonne );
-//
-//		try {
-//			cn = dataSource.getConnection();
-//
-//			// Supprime le personne
-//			sql = "DELETE FROM personne WHERE idpersonne = ? ";
-//			stmt = cn.prepareStatement(sql);
-//			stmt.setObject( 1, idPersonne );
-//			stmt.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			throw new RuntimeException(e);
-//		} finally {
-//			UtilJdbc.close( stmt, cn );
-//		}
-//	}
+	public void supprimer( String code )  {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		String 				sql;
+
+
+		try {
+			cn = dataSource.getConnection();
+
+			// Supprime le personne
+			sql = "DELETE FROM evenement WHERE code = ? ";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject( 1, code );
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( stmt, cn );
+		}
+	}
 //
 //	
-	public Evenement retrouver( int idEvenement )  {
+	public Evenement retrouver( String idEvenement )  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -261,6 +260,10 @@ public class DaoEvenement {
 			Evenement evenement = new Evenement();
 			evenement.setCode(rs.getObject( "code", String.class ));
 			evenement.setNom(rs.getObject( "nom", String.class ));
+			evenement.setTheme(rs.getObject( "theme", String.class ));
+			evenement.setLieu(rs.getObject( "lieu", String.class ));
+			evenement.setDateDebut(rs.getObject( "date_debut", LocalDate.class ));
+			evenement.setDateFin(rs.getObject( "date_fin", LocalDate.class ));
 			//evenement.setDateDebut(rs.getObject( "prenom", String.class ));
 			//evenement.setCategorie( daoCategorie.retrouver( rs.getObject("idcategorie", Integer.class) ) );
 

@@ -11,18 +11,18 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-border-color: #0598ff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-border-color: #0598ff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hackathon.view.utilisateur.ControllerAccueilAdmininstrateur">
    <top>
       <AnchorPane prefHeight="102.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="53.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Pictures/image-devAppli/logo.PNG" />
+                  <Image url="@../../images/logo.PNG" />
                </image>
             </ImageView>
             <ImageView fitHeight="53.0" fitWidth="156.0" layoutX="595.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Pictures/image-devAppli/logo.PNG" />
+                  <Image url="@../../images/logo.PNG" />
                </image>
             </ImageView>
             <Button layoutX="14.0" layoutY="53.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: black;" text="Accueil" />
@@ -39,7 +39,7 @@
          <children>
             <ImageView fitHeight="320.0" fitWidth="281.0" layoutX="11.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/logo.PNG" />
+                  <Image url="@../../images/administrateur.jpg" />
                </image>
             </ImageView>
          </children>
@@ -48,7 +48,7 @@
    <right>
       <AnchorPane prefHeight="398.0" prefWidth="389.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="172.0" layoutY="97.0" mnemonicParsing="false" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-text-fill: black; -fx-border-radius: 5px;" text="ACCUEIL">
+            <Button layoutX="174.0" layoutY="62.0" mnemonicParsing="false" onAction="#goPartenaires" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES PARTENAIRES">
                <textFill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -66,7 +66,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button layoutX="172.0" layoutY="168.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES EVENEMENTS">
+            <Button layoutX="172.0" layoutY="179.0" mnemonicParsing="false" onAction="#goGestionEvenements" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES EVENEMENTS">
                <textFill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -84,7 +84,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button layoutX="172.0" layoutY="246.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES JURYS">
+            <Button layoutX="172.0" layoutY="246.0" mnemonicParsing="false" onAction="#goGestionJurys" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES JURYS">
                <textFill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -102,9 +102,9 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <FontAwesomeIconView glyphName="HOME" layoutX="92.0" layoutY="123.0" size="35" wrappingWidth="26.750024795532227" />
+            <FontAwesomeIconView glyphName="USER_PLUS" layoutX="92.0" layoutY="92.0" size="35" wrappingWidth="26.750024795532227" />
             <FontAwesomeIconView glyphName="USERS" layoutX="90.0" layoutY="341.0" size="35" text="" />
-            <Button layoutX="172.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES PARTECIPANTS">
+            <Button layoutX="172.0" layoutY="315.0" mnemonicParsing="false" onAction="#goGestionCandidats" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES PARTICIPANTS">
                <textFill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -128,6 +128,45 @@
                   <Image url="@../../../../Pictures/image-devAppli/evenement.png" />
                </image>
             </ImageView>
+            <Button layoutX="181.0" layoutY="4.0" mnemonicParsing="false" onAction="#goActivites" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES ACTIVITES">
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.21061618626117706" green="0.062300000339746475" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <FontAwesomeIconView glyphName="STAR_HALF_ALT" layoutX="92.0" layoutY="205.0" size="35" wrappingWidth="26.750024795532227" />
+            <FontAwesomeIconView glyphName="FORT_AWESOME" layoutX="92.0" layoutY="30.0" size="35" wrappingWidth="26.750024795532227" />
+            <Button layoutX="174.0" layoutY="112.0" mnemonicParsing="false" onAction="#goUsers" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-text-fill: black; -fx-border-radius: 5px;" text="GESTION DES UTILISATEURS">
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.21061618626117706" green="0.062300000339746475" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <FontAwesomeIconView glyphName="USER_PLUS" layoutX="92.0" layoutY="142.0" size="35" wrappingWidth="26.750024795532227" />
          </children>
       </AnchorPane>
    </right>

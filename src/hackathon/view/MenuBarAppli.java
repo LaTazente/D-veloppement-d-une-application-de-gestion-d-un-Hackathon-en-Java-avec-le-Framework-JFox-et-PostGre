@@ -157,31 +157,32 @@ public class MenuBarAppli extends MenuBar {
 		
 		// Menu Admin
 		
-		menu =  new Menu( "Admininstrateur" );;
+		menu =  new Menu( "hackathon" );;
 		this.getMenus().add(menu);
 		menuAdmin = menu;
 		
-		item = new MenuItem( "Gestion des partenaires" );
-		item.setOnAction(  e -> managerGui.showView( EnumView.GestionPartenaires )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Gestion des equipes" );
-		item.setOnAction(  e -> managerGui.showView( EnumView.GestionEquipes )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Gestion des utilisateurs" );
-		item.setOnAction(  e -> managerGui.showView( EnumView.UserForm )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Gestion d'un hackathon" );
-		item.setOnAction(  e -> managerGui.showView( EnumView.AjouterEvenement )  );
+		item = new MenuItem( "Connexion" );
+		item.setOnAction(  e -> managerGui.showView( EnumView.Connexion )  );
 		menu.getItems().add( item );
 		itemCategories = item;
 		
-		item = new MenuItem( "Statistiques" );
-		item.setOnAction(  e -> managerGui.showView( EnumView.Statistiques )  );
+//		item = new MenuItem( "Gestion des equipes" );
+//		item.setOnAction(  e -> managerGui.showView( EnumView.GestionEquipes )  );
+//		menu.getItems().add( item );
+//		
+//		item = new MenuItem( "Gestion des utilisateurs" );
+//		item.setOnAction(  e -> managerGui.showView( EnumView.UserForm )  );
+//		menu.getItems().add( item );
+		
+		item = new MenuItem( "Creation d'un hackathon" );
+		item.setOnAction(  e -> managerGui.showView( EnumView.EvenementForm )  );
 		menu.getItems().add( item );
-		itemComptes = item;
+		itemCategories = item;
+//		
+//		item = new MenuItem( "Statistiques" );
+//		item.setOnAction(  e -> managerGui.showView( EnumView.Statistiques )  );
+//		menu.getItems().add( item );
+//		itemComptes = item;
 	}
 
 	
@@ -200,10 +201,11 @@ public class MenuBarAppli extends MenuBar {
 		
 		//menuAdmin.setVisible(false);
 		
-//		if( compteActif != null ) {
-//			itemDeconnecter.setDisable(false);
-//			//System.out.println("icila "+ compteActif.isInRole( Roles.GESTIONNAIREPARTICIPANTS));
-//			System.out.println("icila "+ compteActif.getRoles());
+		if( compteActif != null ) {
+			System.out.println("icila "+ compteActif);
+			itemDeconnecter.setDisable(false);
+			//System.out.println("icila "+ compteActif.isInRole( Roles.GESTIONNAIREPARTICIPANTS));
+		//	System.out.println("icila "+ compteActif.getRoles());
 //			if( compteActif.isInRole( Roles.UTILISATEUR) ) {
 //				
 //				menuDonnees.setVisible(true);
@@ -215,7 +217,7 @@ public class MenuBarAppli extends MenuBar {
 //				itemComptes.setVisible(true);
 //				menuTests.setVisible(true);
 //			}
-//		}
+		}
 	}
 	
 }

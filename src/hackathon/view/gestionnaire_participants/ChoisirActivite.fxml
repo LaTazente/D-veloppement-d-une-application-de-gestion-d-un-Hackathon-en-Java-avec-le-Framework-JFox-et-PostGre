@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="739.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hackathon.view.gestionnaire_participants.ControleurChoixActivite">
+   <children>
+      <ImageView fitHeight="85.0" fitWidth="117.0" layoutX="608.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../IMAGES/IMAGES/logo.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="117.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../IMAGES/IMAGES/logo.PNG" />
+         </image>
+      </ImageView>
+      <ListView fx:id="lsvActivites" layoutX="280.0" layoutY="100.0" prefHeight="129.0" prefWidth="446.0" />
+      <FontAwesomeIconView glyphName="PLUS" layoutX="484.0" layoutY="256.0" onMouseClicked="#doValider" size="20" />
+      <ImageView fitHeight="85.0" fitWidth="117.0" layoutX="28.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+      <Label alignment="CENTER" layoutX="235.0" layoutY="20.0" prefHeight="47.0" prefWidth="276.0" text="Sélection des défis" textFill="#0598ff">
+         <font>
+            <Font name="Yu Gothic Bold" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="4.0" layoutY="80.0" prefHeight="6.0" prefWidth="739.0" />
+      <Separator layoutX="261.0" layoutY="82.0" orientation="VERTICAL" prefHeight="382.0" prefWidth="3.0" />
+      <Label layoutX="21.0" layoutY="151.0" text="Nom groupe :" />
+      <Label layoutX="57.0" layoutY="202.0" text="Chef :" />
+      <Label layoutX="19.0" layoutY="265.0" text="Nbre membre :" />
+      <TextField fx:id="txfNomChef" editable="false" layoutX="108.0" layoutY="197.0" prefHeight="27.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+      <TextField fx:id="txfNomGroupe" editable="false" layoutX="108.0" layoutY="146.0" prefHeight="27.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+      <TextField fx:id="txfNbreMembre" editable="false" layoutX="108.0" layoutY="260.0" prefHeight="27.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+      <FontAwesomeIconView glyphName="FLAG" layoutX="100.0" layoutY="402.0" size="80" wrappingWidth="90.0" />
+      <ListView fx:id="lsvActivites1" layoutX="277.0" layoutY="269.0" prefHeight="129.0" prefWidth="446.0" />
+      <FontAwesomeIconView glyphName="MINUS" layoutX="484.0" layoutY="435.0" onMouseClicked="#doSupprimer" size="20" />
+      <Label layoutX="503.0" layoutY="240.0" text="Ajouter" />
+      <Label layoutX="503.0" layoutY="419.0" text="Supprimer" />
+      <FontAwesomeIconView fill="#0598ff" glyphName="ARROW_LEFT" layoutX="23.0" layoutY="109.0" onMouseClicked="#doAnnuler" size="20" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="424.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hackathon.view.evenement.ControllerEvenementListe">
+   <left>
+      <AnchorPane prefHeight="401.0" prefWidth="172.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="85.0" fitWidth="170.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Pictures/image-devAppli/logo.PNG" />
+               </image>
+            </ImageView>
+            <Button layoutX="30.0" layoutY="144.0" mnemonicParsing="false" onAction="#doAjouter" prefHeight="46.0" prefWidth="134.0" text="        Ajouter" />
+            <Button fx:id="btnModifier" layoutX="28.0" layoutY="273.0" mnemonicParsing="false" onAction="#doModifier" prefHeight="46.0" prefWidth="138.0" text="               Modifier">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PENCIL" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnSupprimer" layoutX="29.0" layoutY="208.0" mnemonicParsing="false" onAction="#doSupprimer" prefHeight="46.0" prefWidth="134.0" text="           Supprimer">
+               <graphic>
+                  <FontAwesomeIconView glyphName="MINUS" />
+               </graphic>
+            </Button>
+            <FontAwesomeIconView glyphName="PLUS" layoutX="47.0" layoutY="171.0" />
+            <Button fx:id="btnModifier1" layoutX="27.0" layoutY="336.0" mnemonicParsing="false" onAction="#goBack" prefHeight="46.0" prefWidth="138.0" text="               Retour">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" />
+               </graphic>
+            </Button>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="500.0" prefWidth="527.0" style="-fx-border-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <Hyperlink layoutX="255.0" layoutY="394.0" textFill="#fa0808" />
+            <FontAwesomeIconView fill="#f70505" glyphName="CLOSE" layoutX="503.0" layoutY="18.0" />
+            <FontAwesomeIconView fill="#0598ff" glyphName="USERS" layoutX="197.0" layoutY="62.0" size="45" text="" wrappingWidth="66.61431121826172">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </FontAwesomeIconView>
+            <Text fill="#0598ff" layoutX="112.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des Evenements">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="299.0" layoutY="129.0" />
+            <TextField layoutX="325.0" layoutY="111.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TableView fx:id="lsvEvenements" layoutX="3.0" layoutY="168.0" onMouseClicked="#gererClicSurListe" prefHeight="200.0" prefWidth="508.0">
+              <columns>
+                <TableColumn fx:id="columnCode" prefWidth="73.59997272491455" text="Code" />
+                <TableColumn fx:id="columnNom" prefWidth="82.4000244140625" text="Nom" />
+                  <TableColumn fx:id="columnTheme" prefWidth="93.5999755859375" text="Theme" />
+                  <TableColumn fx:id="columnLieu" prefWidth="71.20002746582031" text="Lieu" />
+                  <TableColumn fx:id="columnDebut" prefWidth="88.80001831054688" text="Debut" />
+                  <TableColumn fx:id="columnFin" prefWidth="99.199951171875" text="Fin" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+   </center>
+</BorderPane>

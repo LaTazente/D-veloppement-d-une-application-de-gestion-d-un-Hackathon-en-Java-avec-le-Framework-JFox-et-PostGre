@@ -106,8 +106,7 @@ public class Evenement {
 
 	@Override
 	public String toString() {
-		return "Evenement [code=" + code + ", nom=" + nom + ", theme=" + theme + ", lieu=" + lieu + ", dateDebut="
-				+ dateDebut + ", dateFin=" + dateFin + "]";
+		return getCode()+"";
 	}
 	
 	

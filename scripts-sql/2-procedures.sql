@@ -37,95 +37,112 @@ BEGIN
 END;
 $code$;
 
+-- Mes fonctions Gilles
 
--- Fonctions
-
-CREATE OR REPLACE FUNCTION compte_inserer( 
-	p_pseudo		VARCHAR,
-	p_motdepasse	VARCHAR,
-	p_email			VARCHAR,
-	OUT p_idCompte 	INT 
-) 
+-- Fonction dureeActivites
+CREATE OR REPLACE FUNCTION activite_dureeActivites(p_idevenement VARCHAR)
+ RETURNS interval
 AS $code$
-BEGIN
-    INSERT INTO compte ( pseudo, motdepasse, email )
-    VALUES ( p_pseudo, p_motdepasse, p_email )
-	RETURNING idcompte INTO p_idCompte; 
-END;
-$code$ LANGUAGE plpgsql;
+    SELECT SUM(duree) FROM activite WHERE code=p_idevenement;
+$code$
+LANGUAGE sql;
 
 
-CREATE OR REPLACE FUNCTION compte_modifier( 
-	p_pseudo		VARCHAR,
-	p_motdepasse	VARCHAR,
-	p_email			VARCHAR,
-	p_idCompte 		INT 
-) 
-RETURNS VOID 
+-- Fonction taux_participation_presence
+CREATE OR REPLACE FUNCTION s_inscrire_taux_participation_presence(p_idevenement VARCHAR)
+ RETURNS double precision
 AS $code$
-BEGIN
-    UPDATE compte 
-	SET pseudo = p_pseudo,
-		motdepasse = p_motdepasse,
-		email =	p_motdepasse
-	WHERE idcompte = p_idcompte;
-END;
-$code$ LANGUAGE plpgsql;
+    DECLARE taux_total float;
+    DECLARE taux_presence float;
+    BEGIN
+        SELECT count(*) INTO taux_total FROM s_inscrire WHERE code=p_idevenement;
+        SELECT count(*) INTO taux_presence FROM s_inscrire where code=p_idevenement AND presence=TRUE;
+        IF taux_presence = 0.0::double precision OR taux_total = 0.0::double precision THEN
+        	taux_presence = 0.0::double precision;
+        ELSE
+        	taux_presence = (taux_presence/taux_total) * 100;
+        END IF;
+        return taux_presence;
+    END
+$code$
+ LANGUAGE plpgsql
+;
 
-
-CREATE OR REPLACE FUNCTION compte_supprimer( p_idCompte INT ) 
-RETURNS VOID 
+-- Fonction taux_participation_absence
+CREATE OR REPLACE FUNCTION s_inscrire_taux_participation_absence(p_idevenement VARCHAR)
+ RETURNS double precision
 AS $code$
-BEGIN
-    DELETE FROM compte WHERE idcompte = p_idcompte;
-END;
-$code$ LANGUAGE plpgsql;
+    DECLARE taux_total float;
+    DECLARE taux_absence float;
+    BEGIN
+        SELECT count(*) INTO taux_total FROM s_inscrire WHERE code=p_idevenement;
+        SELECT count(*) INTO taux_absence FROM s_inscrire where code=p_idevenement AND presence=FALSE;
+        IF taux_absence = 0.0::double precision OR taux_total = 0.0::double precision THEN
+        	taux_absence = 0.0::double precision;
+        ELSE
+        	taux_absence = (taux_absence/taux_total) * 100;
+        END IF;
+        return taux_absence;
+    END
+$code$
+ LANGUAGE plpgsql
+;
 
-
-CREATE OR REPLACE FUNCTION compte_retrouver( p_idCompte INT ) 
-RETURNS SETOF compte 
+-- Fonction Nbre_groupe
+CREATE OR REPLACE FUNCTION participant_nbre_groupe(p_idgroupe VARCHAR)
+ RETURNS boolean
+ 
 AS $code$
-BEGIN
+    DECLARE p_nbmembre integer;
+    DECLARE p_nombre integer;
+    DECLARE p_verif boolean;
+    BEGIN
+        SELECT count(*) INTO p_nombre FROM participant WHERE id_groupe = p_idgroupe;
+        SELECT nbre_menbres INTO p_nbmembre FROM groupe WHERE id_groupe = p_idgroupe;
+
+        IF p_nombre <= p_nbmembre THEN
+            return TRUE;
+        ELSE
+            return FALSE;
+        END IF;
+    END
+$code$
+LANGUAGE plpgsql
+;
+
+-- Fonction recherche_participants
+CREATE OR REPLACE FUNCTION participant_recherche_participants(p_idevenement VARCHAR)
+ RETURNS SETOF participant
+AS $code$
+BEGIN 
+ 		RETURN QUERY
+        SELECT participant.id, nom, PRENOM, ROLE, sexe, email, TELEPHONE , ID_GROUPE FROM participant INNER JOIN s_inscrire on s_inscrire.id = participant.id WHERE code=p_idevenement GROUP BY id_groupe, participant.id, s_inscrire .code, s_inscrire .ID;
+END
+$code$
+ LANGUAGE plpgsql
+;
+
+-- Fonction  recherche_partenaires
+CREATE OR REPLACE FUNCTION partenaire_recherche_partenaires(p_idevenement VARCHAR)
+RETURNS SETOF partenaire 
+AS
+$code$
+BEGIN 
 	RETURN QUERY
-    SELECT * FROM compte WHERE idcompte = p_idcompte;
-END;
-$code$ LANGUAGE plpgsql;
+    SELECT partenaire.nom_partenaire, description FROM partenaire INNER JOIN assister on partenaire.nom_partenaire = assister.nom_partenaire WHERE code=p_idevenement;
+END
+$code$
+LANGUAGE plpgsql;
 
-
-CREATE OR REPLACE FUNCTION compte_lister_tout() 
-RETURNS SETOF compte 
-AS $code$
-BEGIN
+-- Fonction  recherche_groupes
+CREATE OR REPLACE FUNCTION groupe_recherche_groupes(p_idevenement VARCHAR)
+RETURNS SETOF groupe 
+AS
+$code$
+BEGIN 
 	RETURN QUERY
-    SELECT * FROM compte ORDER BY pseudo;
-END;
-$code$ LANGUAGE plpgsql;
+    SELECT groupe.ID_GROUPE , nom, NBRE_MENBRES , groupe.code  FROM groupe  WHERE code=p_idevenement;
+END
+$code$
+LANGUAGE plpgsql;
 
-
-CREATE OR REPLACE FUNCTION compte_valider_authentification( p_pseudo VARCHAR, p_motdepasse VARCHAR ) 
-RETURNS SETOF compte 
-AS $code$
-BEGIN
-	RETURN QUERY
-    SELECT * FROM compte WHERE pseudo = p_pseudo AND motdepasse = p_motdepasse;
-END;
-$code$ LANGUAGE plpgsql;
-
-
-CREATE OR REPLACE FUNCTION compte_verifier_unicite_pseudo( 
-	p_pseudo		VARCHAR,
-	p_idCompte 		INT,
-	OUT p_unicite	BOOLEAN	
-) 
-AS $code$
-BEGIN
-    SELECT COUNT(*) = 0 INTO p_unicite
-    FROM compte
-    WHERE pseudo = p_pseudo
-      AND idcompte <> P_idcompte;
-END;
-$code$ LANGUAGE plpgsql;
-
-
-
--- Triggers

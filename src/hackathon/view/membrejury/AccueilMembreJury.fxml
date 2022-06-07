@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-border-color: #0598ff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hackathon.view.membrejury.ControllerAccueilGestionJury">
+   <top>
+      <AnchorPane prefHeight="102.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="53.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Pictures/image-devAppli/logo.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="156.0" layoutX="595.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Pictures/image-devAppli/logo.PNG" />
+               </image>
+            </ImageView>
+            <Button layoutX="146.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: black;" text="Noter une equipe" />
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="517.0" layoutY="74.0" />
+            <TextField layoutX="540.0" layoutY="56.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 3px;" />
+            <Button layoutX="341.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: black;" text="Statistiques" textFill="#0598fff2" />
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="398.0" prefWidth="302.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="320.0" fitWidth="281.0" layoutX="11.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/AccueilJurys.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="398.0" prefWidth="389.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="178.0" layoutY="116.0" mnemonicParsing="false" onAction="#goNotation" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-text-fill: black; -fx-border-radius: 5px;" text="Notation">
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.21061618626117706" green="0.062300000339746475" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="84.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Pictures/image-devAppli/evenement.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="59.0" layoutX="84.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Pictures/image-devAppli/statistique.png" />
+               </image>
+            </ImageView>
+            <FontAwesomeIconView glyphName="USERS" layoutX="109.0" layoutY="142.0" size="35" text="" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

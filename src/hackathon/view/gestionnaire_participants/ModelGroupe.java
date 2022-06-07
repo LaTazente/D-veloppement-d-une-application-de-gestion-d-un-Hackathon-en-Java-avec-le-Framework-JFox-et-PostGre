@@ -2,6 +2,7 @@ package hackathon.view.gestionnaire_participants;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -10,9 +11,13 @@ import javafx.collections.ObservableList;
 import jfox.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import hackathon.commun.IMapper;
+import hackathon.dao.DaoEffectuer;
 import hackathon.dao.DaoGroupe;
+import hackathon.dao.DaoParticipant;
+import hackathon.data.Activite;
 import hackathon.data.Groupe;
 import hackathon.data.Service;
+import hackathon.data.Statistique;
 
 
 public class ModelGroupe {
@@ -26,6 +31,7 @@ public class ModelGroupe {
 	
 	private  static boolean isDisabled = false;
 	
+	private final Statistique statistique = new Statistique();
 	
 	// Autres champs
 	
@@ -48,7 +54,11 @@ public class ModelGroupe {
 	private IMapper		mapper;
     @Inject
 	private DaoGroupe	daoGroupe;
-	
+    @Inject
+    private DaoEffectuer daoEffectuer;
+    @Inject
+	 private DaoParticipant daoParticipant;
+
 	
 	// Getters & Setters
 	
@@ -81,7 +91,7 @@ public class ModelGroupe {
 	
 	public void actualiserListe() {
 		liste.setAll( daoGroupe.listerTout() );
-		System.out.println("on est la"+ daoGroupe.retrouverChefParGroupe("G1").getNom());
+		//System.out.println("on est la"+ daoGroupe.retrouverChefParGroupe("G1").getNom());
  	}
 
 	
@@ -152,6 +162,7 @@ public class ModelGroupe {
 			// Insertion*
 			System.out.println("inserer ");
 			selection.setId_groupe( daoGroupe.inserer( courant ) );
+			
 		}
 		
 		if ( isDisabled == true ){
@@ -161,10 +172,42 @@ public class ModelGroupe {
 		}
 	}
 	
+	public String getNomChef(Groupe g) {
+		return daoGroupe.retrouverChefParGroupe(g.getId_groupe());
+	}
+	
+	public int getNombreMembres(Groupe g) {
+		return daoGroupe.getNombreMembres(g);
+	}
 	
 	public void supprimer( Groupe item ) {
 		daoGroupe.supprimer( item.getId_groupe() );
 		selection = UtilFX.findNext( liste, item );
+	}
+	
+	public void insererChoix(Groupe g,List<Activite> l) {
+		daoEffectuer.insererPourGroupe(g, l);
+	}
+
+	public void getMembres(String idGroupe) {
+		statistique.getParticipants().setAll(daoParticipant.retrouverMembresParGroupe(idGroupe));
+	}
+	
+	// Getters
+	public Statistique getStatistique() {
+		return statistique;
+	}
+	
+	
+	public void supprimerChoix(Groupe g,List<Activite> l) {
+		daoEffectuer.supprimerPourGroupe(g, l);
+	}
+	
+	public List<Activite> getDefisRestants(Groupe g){
+		return daoEffectuer.getDefisGroupe(g);
+	}
+	public List<Activite> getDefisChoisis(Groupe g){
+		return daoEffectuer.getDefisChoisisGroupe(g);
 	}
 
 }

@@ -25,6 +25,7 @@ import hackathon.data.Jury;
 import hackathon.data.Personne;
 import hackathon.view.EnumView;
 import hackathon.view.evenement.ModelEvenement;
+import hackathon.view.systeme.ControllerConnexion;
 
 
 public class ControllerUserForm extends Controller {
@@ -49,6 +50,9 @@ public class ControllerUserForm extends Controller {
     @FXML
     private RadioButton rbAdmin;
 
+    @FXML
+    private RadioButton rbGestionnairePartenaires;
+    
     @FXML
     private RadioButton rbGestionnaireParticipants;
 
@@ -127,10 +131,15 @@ public class ControllerUserForm extends Controller {
 	private void doValider() {
 		List<String> tab = new ArrayList<String>();
 		System.out.println("test");
+//		
+//		if(rbAdmin.isSelected()) {
+//			System.out.println("selected");
+//			tab.add("Admininstrateur");
+//		}
 		
-		if(rbAdmin.isSelected()) {
+		if(rbGestionnairePartenaires.isSelected()) {
 			System.out.println("selected");
-			tab.add("Admininstrateur");
+			tab.add("GestionnairePartenaires");
 		}
 		if(rbGestionnaireParticipants.isSelected()) {
 			System.out.println("selected");
@@ -150,5 +159,9 @@ public class ControllerUserForm extends Controller {
 		managerGui.showView( EnumView.ConnexionVrai );
 	}
 	
+	@FXML
+	private void goBack() {
+		managerGui.showView(EnumView.AccueilAdmin);
+	}
 
 }
