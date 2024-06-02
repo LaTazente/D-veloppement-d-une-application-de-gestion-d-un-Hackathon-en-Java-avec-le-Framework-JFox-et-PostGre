@@ -49,9 +49,7 @@ Le projet consiste à développer une application complète pour la gestion d'un
   - Gestion de version : Git (GitHub, GitLab)
   - Outils de gestion de projet : Jira, Trello
   - Outils de build : Maven, Gradle
-- **Frontend :**
-  - Langages : HTML, CSS, JavaScript
-  - Frameworks/Bibliothèques : Bootstrap, React, Angular ou Vue.js (au choix)
+  
 - **Outils de test :** JUnit, Selenium
 - **Outils de déploiement :** Docker, Kubernetes, Jenkins
 
